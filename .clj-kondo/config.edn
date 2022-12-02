@@ -1,0 +1,7 @@
+{:linters
+ {:refer-all
+  {:exclude [clojure.test]}
+
+  :consistent-alias
+  {:aliases {clojure.string str}}}
+ }
