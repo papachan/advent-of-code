@@ -42,7 +42,12 @@
      "C Z" (+ 6 1)
      nil))
 
+(comment
   (->> (read-challenge "input.txt")
        (map game02->scores)
        (remove nil?)
-       (reduce +))
+       (reduce +)))
+
+(defn run
+  []
+  (println "OK!!!!"))

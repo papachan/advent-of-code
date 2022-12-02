@@ -40,3 +40,7 @@
 (comment
   (let [res (read-chunks (str dir "part-2.txt"))]
     (solution-2 res)))
+
+(defn run
+  [& args]
+  (println "OK!!!!"))

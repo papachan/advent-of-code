@@ -1,7 +1,5 @@
 # advent-of-code-2022
 
-## Installation
-
 ## Usage
 
 FIXME: explanation
@@ -11,20 +9,13 @@ Run the project directly, via `:exec-fn`:
     $ clojure -X:run-x
     Hello, Clojure!
 
-Run the project, overriding the name to be greeted:
+Run the project passing a specific day
 
-    $ clojure -X:run-x :name '"Someone"'
-    Hello, Someone!
+    $ clojure -X:run-x :day 'day01'
 
-Run the project directly, via `:main-opts` (`-m core.advent-of-code-2022`):
+Run the project directly, via `:main-opts` (`-m advent-of-code.core`):
 
     $ clojure -M:run-m
-    Hello, World!
-
-Run the project, overriding the name to be greeted:
-
-    $ clojure -M:run-m Via-Main
-    Hello, Via-Main!
 
 Run the project's tests (they'll fail until you edit them):
 
@@ -44,7 +35,7 @@ from `build.clj`.
 
 Run that uberjar:
 
-    $ java -jar target/advent-of-code-2022.jar
+    $ java -jar target/advent-of-code.jar
 
 ## License
 

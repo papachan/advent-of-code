@@ -3,7 +3,7 @@
  :aliases
  {:run-m {:main-opts ["-m" "advent-of-code.core"]}
   :run-x {:ns-default advent-of-code.core
-          :exec-fn greet
+          :exec-fn run-problem
           :exec-args {:name "Clojure"}}
   :build {:deps {io.github.seancorfield/build-clj
                  {:git/tag "v0.6.3" :git/sha "9b8e09b"
