@@ -6,13 +6,14 @@
    [advent-of-code.day02 :as day02])
   (:gen-class))
 
-(defn run-problem
+(defn run-solution
   [data]
-  (when-let [fun (ns-resolve *ns* (symbol (str "advent-of-code." (:day data) "/run")))]
-    (apply fun nil)))
+  (if-let [fun (ns-resolve *ns* (symbol (str "advent-of-code." (:day data) "/run")))]
+    (apply fun nil)
+    (throw (ex-info "Day not available for now!" {}))))
 
 (defn -main
   [& args]
   (when (empty? args)
     (throw (ex-info "Need an argument to define the day to process" {}))
-    (run-problem {:day (first args)})))
+    (run-solution {:day (first args)})))
