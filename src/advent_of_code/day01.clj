@@ -42,5 +42,12 @@
     (solution-2 res)))
 
 (defn run
-  [& args]
-  (println "OK!!!!"))
+  [& _]
+  (let [res (->> (read-chunks (str dir "part-1.txt"))
+                 solution-1)]
+    (println (str "Solution 1 - " res))
+    (is (= res 24000)))
+  (let [res (->> (read-chunks (str dir "part-2.txt"))
+                 solution-2)]
+    (println (str "Solution 2 - " res))
+    (is (= res 206104))))

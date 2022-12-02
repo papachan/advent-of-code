@@ -1,6 +1,7 @@
 (ns advent-of-code.day02
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [clojure.test :refer [is]]))
 
 (defonce dir "day02")
 
@@ -22,13 +23,6 @@
      "C Z" (+ 3 3)
      nil))
 
-(comment
-  (->> (read-challenge "input.txt")
-       (map game01->scores)
-       (remove nil?)
-       (reduce +))
-  )
-
 (def game02->scores
   #(case %
      "A X" (+ 0 3)
@@ -42,12 +36,15 @@
      "C Z" (+ 6 1)
      nil))
 
-(comment
-  (->> (read-challenge "input.txt")
-       (map game02->scores)
-       (remove nil?)
-       (reduce +)))
-
 (defn run
-  []
-  (println "OK!!!!"))
+  [& _]
+  (let [res (->> (read-challenge "input.txt")
+                 (map game01->scores)
+                 (reduce +))]
+    (println (str "Solution 1 - " res))
+    (is (= res 15632)))
+  (let [res (->> (read-challenge "input.txt")
+                 (map game02->scores)
+                 (reduce +))]
+    (println (str "Solution 2 - " res))
+    (is (= res 14416))))
