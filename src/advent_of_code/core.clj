@@ -3,7 +3,8 @@
    [clojure.java.io :as io]
    [clojure.string :as str]
    [advent-of-code.day01 :as day01]
-   [advent-of-code.day02 :as day02])
+   [advent-of-code.day02 :as day02]
+   [advent-of-code.day03 :as day03])
   (:gen-class))
 
 (defn run-solution
