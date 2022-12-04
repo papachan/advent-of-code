@@ -14,30 +14,31 @@
 
 (defn divide-ruckstack
   [v]
-  (let [[a b] (partition (/ (count v) 2) v)]
+  (let [[a b] (split-at (/ (count v) 2) v)]
     (set/intersection (into #{} a)
                       (into #{} b))))
 
-(defn alphabet-chars
-  [characters]
-  (->> characters
-       (mapv #(->> % char str))
-       (str/join)
-       (map-indexed vector)))
+;; (defn alphabet-chars
+;;   [characters]
+;;   (->> characters
+;;        (mapv #(->> % char str))
+;;        (str/join)
+;;        (map-indexed vector)))
 
-(defonce alphabet-index
-  (->> (for [[idx v] (alphabet-chars (concat
-                                      (range (int \a) (inc (int \z)))
-                                      (range (int \A) (inc (int \Z)))))]
-         [v (inc idx)])
-       (into {})))
+;; (defonce alphabet-index
+;;   (->> (for [[idx v] (alphabet-chars (concat
+;;                                       (range (int \a) (inc (int \z)))
+;;                                       (range (int \A) (inc (int \Z)))))]
+;;          [v (inc idx)])
+;;        (into {})))
 
 (defn solve-1
   []
   (->> (read-input)
        (map divide-ruckstack)
        (mapv first)
-       (mapv #(get alphabet-index %))
+       (map (fn [c]
+              (-> (int c) (- 96) (mod 58))))
        (reduce +)))
 
 (defn solve-2
@@ -49,7 +50,8 @@
                    (map set)
                    (apply set/intersection))))
        (map first)
-       (mapv #(get alphabet-index %))
+       (map (fn [c]
+              (-> (int c) (- 96) (mod 58))))
        (reduce +)))
 
 (defn run
