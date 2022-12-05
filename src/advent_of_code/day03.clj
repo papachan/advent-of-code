@@ -4,10 +4,8 @@
             [clojure.set :as set]
             [clojure.test :refer [is]]))
 
-(defonce dir "day03")
-
 (defn read-input
-  []
+  [dir]
   (->> (io/resource (str dir "/" "input.txt"))
        (slurp)
        (str/split-lines)))
@@ -18,23 +16,9 @@
     (set/intersection (into #{} a)
                       (into #{} b))))
 
-;; (defn alphabet-chars
-;;   [characters]
-;;   (->> characters
-;;        (mapv #(->> % char str))
-;;        (str/join)
-;;        (map-indexed vector)))
-
-;; (defonce alphabet-index
-;;   (->> (for [[idx v] (alphabet-chars (concat
-;;                                       (range (int \a) (inc (int \z)))
-;;                                       (range (int \A) (inc (int \Z)))))]
-;;          [v (inc idx)])
-;;        (into {})))
-
 (defn solve-1
-  []
-  (->> (read-input)
+  [day]
+  (->> (read-input day)
        (map divide-ruckstack)
        (mapv first)
        (map (fn [c]
@@ -42,8 +26,8 @@
        (reduce +)))
 
 (defn solve-2
-  []
-  (->> (read-input)
+  [day]
+  (->> (read-input day)
        (partition 3)
        (map (fn [m]
               (->> m
@@ -55,13 +39,13 @@
        (reduce +)))
 
 (defn run
-  [& _]
-  (let [res (solve-1)]
+  [& args]
+  (let [res (solve-1 (first args))]
     (println (str "Solution 1 - " res))
     (is (= res 7821)))
-  (let [res (solve-2)]
+  (let [res (solve-2 (first args))]
     (println (str "Solution 2 - " res))
     (is (= res 2752))))
 
 (comment
-  (run))
+  (run '("day03")))

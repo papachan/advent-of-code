@@ -3,10 +3,9 @@
             [clojure.string :as str]
             [clojure.test :refer [is]]))
 
-(defonce dir "day02")
-
-(defn read-challenge [input]
-  (-> (io/resource (str dir "/" input))
+(defn read-challenge
+  [dir]
+  (-> (io/resource (str dir "/" "input.txt"))
        slurp
        str/split-lines))
 
@@ -37,13 +36,13 @@
      nil))
 
 (defn run
-  [& _]
-  (let [res (->> (read-challenge "input.txt")
+  [& day]
+  (let [res (->> (read-challenge (first day))
                  (map game01->scores)
                  (reduce +))]
     (println (str "Solution 1 - " res))
     (is (= res 15632)))
-  (let [res (->> (read-challenge "input.txt")
+  (let [res (->> (read-challenge (first day))
                  (map game02->scores)
                  (reduce +))]
     (println (str "Solution 2 - " res))
