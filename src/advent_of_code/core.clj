@@ -6,7 +6,9 @@
    [advent-of-code.day02 :as day02]
    [advent-of-code.day03 :as day03]
    [advent-of-code.day04 :as day04]
-   [advent-of-code.day05 :as day05])
+   [advent-of-code.day05 :as day05]
+   [advent-of-code.day06 :as day06])
+
   (:gen-class))
 
 (defn run-solution
